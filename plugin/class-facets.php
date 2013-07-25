@@ -1,4 +1,5 @@
 <?php
+require_once('wlog.php');
 
 class Facets
 {
@@ -91,6 +92,12 @@ class Facets
 
 		// identify the selected search terms
 		$searched = array_intersect_key( $query->query , $this->_query_vars );
+
+		if ( isset( $query->query['taxonomy'] ) && ( 'author' == $query->query['taxonomy'] ) )
+		{
+			$searched['authors'] = $query->query['term'];
+		}
+
 		$this->selected_facets = (object) array();
 		foreach( $searched as $k => $v )
 		{
