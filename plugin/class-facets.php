@@ -1,5 +1,4 @@
 <?php
-require_once('wlog.php');
 
 class Facets
 {
